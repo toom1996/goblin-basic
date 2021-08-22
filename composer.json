@@ -1,0 +1,12 @@
+{
+    "name": "toom1996/goblin",
+    "description": "Light php framework for swoole engine.",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Toom1996\\Goblin\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
