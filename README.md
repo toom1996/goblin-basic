@@ -3,6 +3,6 @@
         <h1>Goblin</h1>
     </a>
 </p>
-Light php framework for swoole engine.
+Gobiln framework basic demo.
 
 

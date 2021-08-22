@@ -1,12 +1,11 @@
 {
-    "name": "toom1996/goblin",
+    "name": "toom1996/goblin-basic",
     "description": "Light php framework for swoole engine.",
     "type": "project",
-    "autoload": {
-        "psr-4": {
-            "Toom1996\\Goblin\\": "src/"
-        }
-    },
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": ">=7.4.0",
+        "toom1996/goblin": "dev-main",
+        "nikic/fast-route": "2.0.x-dev"
+    }
 }
