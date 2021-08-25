@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use toom1996\base\InvalidConfigException;
 use toom1996\http\Controller;
+use toom1996\http\Goblin;
 
 /**
  * Class SiteController
@@ -12,8 +14,23 @@ use toom1996\http\Controller;
  */
 class SiteController extends Controller
 {
+    /**
+     *
+     * @return mixed
+     * @throws InvalidConfigException
+     * @throws \ReflectionException
+     * @throws \Throwable
+     */
     public function actionIndex()
     {
-        return $this->render('@app/views/site/index');
+        return $this->render('@goblin/views/index');
+    }
+
+    /**
+     *
+     */
+    public function actionMethods()
+    {
+        echo Goblin::$app->request->getMethod();
     }
 }
