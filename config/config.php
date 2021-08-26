@@ -6,19 +6,19 @@ return [
     // Application id.
     'id' => 'goblin-http-application',
 
-    // Application path.
-    'basePath' => APP_PATH,
-
-    // Controller path.
-    // The directory where the controller files are placed.
-    'controllersPath' => APP_PATH . '/controllers',
-
     'swoole' => $swoole,
 
     // Aliases.
     'aliases' => [
+        '@app' => APP_PATH,
+        '@controllers' => APP_PATH . '/controllers',
+        '@runtime' => APP_PATH  . '/runtime',
     ],
     'route' => $route,
     'components' => [
+        'log' => [
+            'class' => 'toom1996\log\FileTarget',
+            'logFile' => '@runtime/log/app.log'
+        ]
     ],
 ];

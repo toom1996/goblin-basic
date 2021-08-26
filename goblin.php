@@ -36,7 +36,7 @@ $http->on(
     "request",
     function (\Swoole\Http\Request $request, \Swoole\Http\Response $response) use ($loader, $http) {
 //                        return $response->end("<h1>~~~~~~</h1>\n");
-        $loader->load(\toom1996\http\Goblin::class)->run($request, $response);
+        $loader->load(\toom1996\http\Goblin::class, $request, $response)->run($request, $response);
     }
 );
 

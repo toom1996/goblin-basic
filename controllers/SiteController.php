@@ -28,9 +28,12 @@ class SiteController extends Controller
 
     /**
      *
+     *
+     * @throws InvalidConfigException
+     * @throws \ReflectionException
      */
     public function actionMethods()
     {
-        echo Goblin::$app->request->getMethod();
+        Goblin::dump(Goblin::$app->getLog());
     }
 }

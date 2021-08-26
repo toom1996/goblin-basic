@@ -8,7 +8,7 @@ Gobiln framework basic demo.
 
  - TODO
     - assetManager.
-    - print.
+    - ~~print~~.
     - log.
     - mysql.
     - redis.
