@@ -17,8 +17,14 @@ return [
     'route' => $route,
     'components' => [
         'log' => [
-            'class' => 'toom1996\log\FileTarget',
-            'logFile' => '@runtime/log/app.log'
+            'targets' => [
+                'application' => [
+                    'logFile' => '@runtime/log/app.log'
+                ],
+                'debug' => [
+                    'logFile' => '@runtime/log/debug.log'
+                ]
+            ],
         ]
     ],
 ];
