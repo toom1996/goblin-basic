@@ -17,7 +17,7 @@ return [
     'route' => $route,
     'components' => [
         'log' => [
-            'targets' => [
+            'app' => [
                 'application' => [
                     'logFile' => '@runtime/log/app.log'
                 ],
