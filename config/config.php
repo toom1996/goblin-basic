@@ -17,14 +17,15 @@ return [
     'route' => $route,
     'components' => [
         'log' => [
-            'app' => [
+            'targets' => [
                 'application' => [
+                    'microtime' => false,
                     'logFile' => '@runtime/log/app.log'
                 ],
                 'debug' => [
                     'logFile' => '@runtime/log/debug.log'
                 ]
-            ],
+            ]
         ]
     ],
 ];
