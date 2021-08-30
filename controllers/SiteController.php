@@ -34,6 +34,9 @@ class SiteController extends Controller
      */
     public function actionMethods()
     {
-        Goblin::dump(Goblin::$app->getLog());
+        for ($i = 0; $i<10; $i++) {
+            Goblin::info($i);
+        }
+        return 123;
     }
 }
