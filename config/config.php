@@ -4,7 +4,7 @@ $route = require __DIR__ . '/route.php';
 
 return [
     // Application id.
-    'id' => 'Van application',
+    'id' => 'Eazy-app',
 
     'swoole' => $swoole,
 

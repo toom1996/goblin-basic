@@ -66,9 +66,7 @@ $loader = new \toom1996\GoblinLoader($config);
 //    }
 //);
 
-$server = new \toom1996\server\HttpServer($config['swoole']);
-$server->onRequest(function (\Swoole\Http\Request $request, \Swoole\Http\Response $response) {
-
-});
+$application = (new \toom1996\Application($config))->createServer();
+$application->application->start();
 
 //$http->start();
