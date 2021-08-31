@@ -7,5 +7,15 @@
         "php": ">=7.4.0",
         "toom1996/goblin": "dev-main",
         "nikic/fast-route": "2.0.x-dev"
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        },
+        {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    ]
 }

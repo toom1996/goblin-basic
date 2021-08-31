@@ -4,15 +4,15 @@ $route = require __DIR__ . '/route.php';
 
 return [
     // Application id.
-    'id' => 'goblin-http-application',
+    'id' => 'Van application',
 
     'swoole' => $swoole,
 
     // Aliases.
     'aliases' => [
         '@app' => APP_PATH,
-        '@controllers' => APP_PATH . '/controllers',
         '@runtime' => APP_PATH  . '/runtime',
+        '@controllers' => APP_PATH . '/controllers',
     ],
     'route' => $route,
     'components' => [
