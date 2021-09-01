@@ -22,5 +22,6 @@ ini_set('display_startup_errors', 'on');
 error_reporting(E_ALL);
 date_default_timezone_set('Asia/Shanghai');
 
-$application = (new \toom1996\Application($config))->createServer();
-$application->application->start();
+Swoole\Runtime::enableCoroutine();
+$server = (new \toom1996\Application($config))->createServer();
+$server->application->start();

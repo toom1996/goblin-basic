@@ -15,7 +15,17 @@ return [
         '@controllers' => APP_PATH . '/controllers',
     ],
     'route' => $route,
+    'bootstrap' => ['redis'],
     'components' => [
+        'redis' => [
+            'class' => 'toom1996\db\redis',
+            'host' => 'localhost',
+            'port' => 6379,
+            'auth' => '',
+            'db_index' => 0,
+            'time_out' => 1,
+            'size' => 64,
+        ],
         'log' => [
             'targets' => [
                 'application' => [
