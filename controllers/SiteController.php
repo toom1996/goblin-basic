@@ -34,11 +34,10 @@ class SiteController extends Controller
      */
     public function actionMethods()
     {
-//        $redis = new \Redis();
-//        $res = $redis->connect('172.17.0.3', 6379);
-//        for ($i = 0; $i<1; $i++) {
-//            $redis->set('test' . $i, 'aa');
-//        }
+        $pool = Goblin::$app->get('redis')->pools;
+        $redis = $pool->get();
+        ($redis->get('test0'));
+        $pool->put($redis);
         return 666;
     }
 

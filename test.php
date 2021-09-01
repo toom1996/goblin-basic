@@ -1,54 +1,38 @@
 <?php
 
-class RedisPool
-{
-    /**@var \Swoole\Coroutine\Channel */
-    protected $pool;
+declare(strict_types=1);
 
-    /**
-     * RedisPool constructor.
-     * @param int $size max connections
-     */
-    public function __construct(int $size = 100)
-    {
-        go(function () {
+use Swoole\Coroutine;
+use Swoole\Database\RedisConfig;
+use Swoole\Database\RedisPool;
+use Swoole\Runtime;
 
+const N = 10240;
+
+Runtime::enableCoroutine();
+$s = microtime(true);
+Coroutine\run(function () {
+    $pool = new RedisPool((new RedisConfig)
+        ->withHost('192.168.1.4')
+        ->withPort(6379)
+        ->withAuth('')
+        ->withDbIndex(0)
+        ->withTimeout(1), 100
+    );
+    for ($n = N; $n--;) {
+        Coroutine::create(function () use ($pool) {
+            $redis = $pool->get();
+            $result = $redis->set('foo', 'bar');
+            if (!$result) {
+                throw new RuntimeException('Set failed');
+            }
+            $result = $redis->get('foo');
+            if ($result !== 'bar') {
+                throw new RuntimeException('Get failed');
+            }
+            $pool->put($redis);
         });
-        echo '123';
     }
-
-    public function get(): \Swoole\Coroutine\Redis
-    {
-        return $this->pool->pop();
-    }
-
-    public function put(\Swoole\Coroutine\Redis $redis)
-    {
-        $this->pool->push($redis);
-    }
-
-    public function close(): void
-    {
-        $this->pool->close();
-        $this->pool = null;
-    }
-}
-
-//go(function () {
-Swoole\Runtime::enableCoroutine();
-    $pool = new RedisPool();
-//    // max concurrency num is more than max connections
-//    // but it's no problem, channel will help you with scheduling
-//    var_dump(microtime(true));
-//    for ($c = 0; $c < 1000; $c++) {
-//        go(function () use ($pool, $c) {
-//            for ($n = 0; $n < 100; $n++) {
-//                $redis = $pool->get();
-//                assert($redis->set("awesome-{$c}-{$n}", 'swoole'));
-////                assert($redis->get("awesome-{$c}-{$n}") === 'swoole');
-////                assert($redis->delete("awesome-{$c}-{$n}"));
-//                $pool->put($redis);
-//            }
-//        });
-//    }
-//});
+});
+$s = microtime(true) - $s;
+echo 'Use ' . $s . 's for ' . (N * 2) . ' queries' . PHP_EOL;

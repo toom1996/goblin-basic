@@ -19,12 +19,12 @@ return [
     'components' => [
         'redis' => [
             'class' => 'toom1996\db\redis',
-            'host' => 'localhost',
+            'host' => '192.168.1.4',
             'port' => 6379,
             'auth' => '',
             'db_index' => 0,
             'time_out' => 1,
-            'size' => 64,
+            'size' => 100,
         ],
         'log' => [
             'targets' => [
