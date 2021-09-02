@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use Co\Context;
+use Swoole\Coroutine;
 use toom1996\base\InvalidConfigException;
 use toom1996\http\Controller;
 use toom1996\http\Goblin;
@@ -36,7 +38,8 @@ class SiteController extends Controller
     {
         $pool = Goblin::$app->get('redis')->pools;
         $redis = $pool->get();
-        ($redis->get('test0'));
+        $v = Coroutine::getCid();
+        ($redis->set('test'. $v, $v));
         $pool->put($redis);
         return 666;
     }

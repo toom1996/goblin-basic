@@ -13,7 +13,7 @@ Runtime::enableCoroutine();
 $s = microtime(true);
 Coroutine\run(function () {
     $pool = new RedisPool((new RedisConfig)
-        ->withHost('192.168.1.4')
+        ->withHost('172.17.0.3')
         ->withPort(6379)
         ->withAuth('')
         ->withDbIndex(0)

@@ -5,6 +5,6 @@ return [
     'set' => [
         'enable_static_handler' => APP_DEBUG,
         'document_root' => APP_PATH . '/web',
-        'worker_num' => 2
+        'worker_num' => 4
     ]
 ];

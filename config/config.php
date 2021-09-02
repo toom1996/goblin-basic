@@ -18,8 +18,8 @@ return [
     'bootstrap' => ['redis'],
     'components' => [
         'redis' => [
-            'class' => 'toom1996\db\redis',
-            'host' => '192.168.1.4',
+            'class' => 'toom1996\db\Redis',
+            'host' => '172.17.0.3',
             'port' => 6379,
             'auth' => '',
             'db_index' => 0,
