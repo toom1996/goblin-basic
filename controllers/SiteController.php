@@ -3,9 +3,11 @@
 namespace app\controllers;
 
 use Co\Context;
+use Co\Server;
 use Swoole\Coroutine;
 use toom1996\base\InvalidConfigException;
 use toom1996\http\Controller;
+use toom1996\http\Eazy;
 use toom1996\http\Goblin;
 
 /**
@@ -25,7 +27,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('@goblin/views/index');
+        return 1234;
+//        return $this->render('@goblin/views/index');
     }
 
     /**
@@ -36,11 +39,12 @@ class SiteController extends Controller
      */
     public function actionMethods()
     {
-        $pool = Goblin::$app->get('redis')->pools;
-        $redis = $pool->get();
-        $v = Coroutine::getCid();
-        ($redis->set('test'. $v, $v));
-        $pool->put($redis);
+//        Coroutine::create(function() {
+            $pool = Eazy::$app->get('redis')->pools;
+            $redis = $pool->get();
+            ($redis->set('test', '12'));
+            $pool->put($redis);
+//        });
         return 666;
     }
 

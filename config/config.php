@@ -5,9 +5,6 @@ $route = require __DIR__ . '/route.php';
 return [
     // Application id.
     'id' => 'Eazy-app',
-
-    'swoole' => $swoole,
-
     // Aliases.
     'aliases' => [
         '@app' => APP_PATH,
@@ -19,12 +16,12 @@ return [
     'components' => [
         'redis' => [
             'class' => 'toom1996\db\Redis',
-            'host' => '172.17.0.3',
+            'host' => '192.168.1.4',
             'port' => 6379,
             'auth' => '',
             'db_index' => 0,
             'time_out' => 1,
-            'size' => 100,
+            'size' => 300,
         ],
         'log' => [
             'targets' => [

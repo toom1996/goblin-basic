@@ -17,7 +17,7 @@ defined('APP_DEBUG') or define('APP_DEBUG', true);
 
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/vendor/toom1996/goblin/src/http/Eazy.php';
-$config = require __DIR__ . '/config/config.php';
+//$config = require __DIR__ . '/config/config.php';
 
 ini_set('display_errors', 'on');
 ini_set('display_startup_errors', 'on');
@@ -28,8 +28,12 @@ date_default_timezone_set('Asia/Shanghai');
 //Swoole\Runtime::enableCoroutine();
 //$server = (new \toom1996\Application($config))->createServer();
 //$server->application->start();
-$server = (new \toom1996\Application())->createServer();
-$server->run();
+(function() {
+    $config = require __DIR__ . '/config/swoole.php';
+    $app = new \toom1996\Application();
+    $server = $app->createServer($config);
+    $server->run();
+})();
 
 
 //$http = new Swoole\Http\Server('0.0.0.0', 9502);
