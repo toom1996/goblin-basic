@@ -22,8 +22,8 @@ ini_set('display_startup_errors', 'on');
 error_reporting(E_ALL);
 date_default_timezone_set('Asia/Shanghai');
 
+
 (function() {
-    Co::set(['hook_flags'=> SWOOLE_HOOK_ALL]);
     $config = require __DIR__ . '/config/swoole.php';
     $app = new \toom1996\Application();
     $app->createServer($config)->run();
