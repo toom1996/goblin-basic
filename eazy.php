@@ -25,6 +25,5 @@ date_default_timezone_set('Asia/Shanghai');
 
 (function() {
     $config = require __DIR__ . '/config/swoole.php';
-    $app = new \toom1996\Application();
-    $app->createServer($config)->run();
+    new \toom1996\Application($config);
 })();
