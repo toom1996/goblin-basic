@@ -18,17 +18,17 @@ use toom1996\http\Goblin;
  */
 class SiteController extends Controller
 {
+
     /**
      *
-     * @return mixed
-     * @throws InvalidConfigException
+     * @return false|mixed|string
      * @throws \ReflectionException
      * @throws \Throwable
+     * @throws \toom1996\base\InvalidConfigException
      */
     public function actionIndex()
     {
-        return 1234;
-//        return $this->render('@goblin/views/index');
+        return $this->render('@eazy/views/index');
     }
 
     /**
@@ -39,13 +39,16 @@ class SiteController extends Controller
      */
     public function actionMethods()
     {
-//        Coroutine::create(function() {
+//        echo 1;
+        $a = 123;
+        var_dump(Eazy::$app->get('redis'));
             $pool = Eazy::$app->get('redis')->pools;
             $redis = $pool->get();
-            ($redis->set('test', '12'));
+            $a = ($redis->get('test'));
             $pool->put($redis);
-//        });
-        return 666;
+            echo 3;
+//        echo 2;
+        return $a;
     }
 
 
