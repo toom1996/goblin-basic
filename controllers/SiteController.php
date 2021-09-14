@@ -2,33 +2,24 @@
 
 namespace app\controllers;
 
-use Co\Context;
-use Co\Server;
-use Swoole\Coroutine;
 use toom1996\base\InvalidConfigException;
 use toom1996\http\Controller;
 use toom1996\http\Eazy;
-use toom1996\http\Goblin;
 
 /**
  * Class SiteController
  *
- * @author TOOM <1023150697@qq.com>
- *
+ * @author: TOOM1996
+ * @since 1.0.0
+ * @license http://www.apache.org/licenses/LICENSE-2.0
  */
 class SiteController extends Controller
 {
-
-    /**
-     *
-     * @return false|mixed|string
-     * @throws \ReflectionException
-     * @throws \Throwable
-     * @throws \toom1996\base\InvalidConfigException
-     */
     public function actionIndex()
     {
-        return $this->render('@eazy/views/index');
+//        return 123;
+         return $this->render('@eazy/views/index');
+//                return 123;
     }
 
     /**
